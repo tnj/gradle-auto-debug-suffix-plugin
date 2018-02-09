@@ -1,0 +1,31 @@
+plugins {
+    id "com.gradle.plugin-publish" version "0.9.9"
+}
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+archivesBaseName = 'auto-debug-suffix' // settings.gradle で設定してない場合はこれで設定
+group = 'sh.nothing'
+version = '0.1.0'
+
+// The configuration example below shows the minimum required properties
+// configured to publish your plugin to the plugin portal
+pluginBundle {
+    website = 'https://github.com/tnj/gradle-auto-debug-suffix-plugin'
+    vcsUrl = 'https://github.com/tnj/gradle-auto-debug-suffix-plugin'
+    description = 'Automatically add DEBUG suffix on version and package name of Android app'
+    tags = ['android']
+
+    plugins {
+        autoDebugSuffixPlugin {
+            id = 'sh.nothing.auto-debug-suffix'
+            displayName = 'Auto Debug Suffix Plugin for Android'
+        }
+    }
+}
